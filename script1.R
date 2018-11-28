@@ -61,3 +61,25 @@ for (dataset in WholeData){
   i<-i+1
 }
 
+#Test for higher order
+i=1
+for (dataset in WholeData){
+  name<- paste("model",i, sep="")
+  name2<-paste("model_full",i, sep="")
+  name3<-paste("model_final",i, sep="")
+  model<-lm(Result~Year, data=dataset)
+  model_full<-lm(Result~Year+I(Year^2)+I(Year^3), data=dataset)
+  model_final<-step(model,scope = list(lower=formula(model),upper=formula(model_full)), direction = 'both')
+  assign(name,model)
+  assign(name2,model_full)
+  assign(name3,model_final)
+  i=i+1
+}
+
+modelList2<-list(model_final1,model_final2,model_final3,model_final4,model_final5,model_final6,model_final7,model_final8,model_final9,model_final10)
+i=1
+for (dataset in WholeData){
+  plot(dataset$Year,dataset$Result,main=focus[i], col=dataset$Medal)
+  lines(dataset$Year,modelList2[[i]]$fitted.values)
+  i<-i+1
+}
