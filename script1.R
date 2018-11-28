@@ -1,4 +1,5 @@
 library(readr)
+library(MASS)
 
 #Read data
 results <- read_csv("~/Documents/Olympic-Results-Regression/olympic-track-field-results/results.csv")
@@ -20,18 +21,21 @@ for (event in focus){
 
 `data_100M Men`$Result<-as.numeric(`data_100M Men`$Result)
 `data_100M Women`$Result<-as.numeric(`data_100M Women`$Result)
-`data_200M Men`$Result<-as.numeric(`data_100M Men`$Result)
-`data_200M Women`$Result<-as.numeric(`data_100M Women`$Result)
-`data_Long Jump Men`$Result<-as.numeric(`data_100M Men`$Result)
-`data_Long Jump Women`$Result<-as.numeric(`data_100M Women`$Result)
-`data_Shot Put Men`$Result<-as.numeric(`data_100M Men`$Result)
-`data_Shot Put Women`$Result<-as.numeric(`data_100M Women`$Result)
+`data_200M Men`$Result<-as.numeric(`data_200M Men`$Result)
+`data_200M Women`$Result<-as.numeric(`data_200M Women`$Result)
+`data_Long Jump Men`$Result<-as.numeric(`data_Long Jump Men`$Result)
+`data_Long Jump Women`$Result<-as.numeric(`data_Long Jump Women`$Result)
+`data_Shot Put Men`$Result<-as.numeric(`data_Shot Put Men`$Result)
+`data_Shot Put Women`$Result<-as.numeric(`data_Shot Put Women`$Result)
 for (i in 1:length(`data_1500M Men`$Result)){
   `data_1500M Men`$Result[i]<-as.numeric(strsplit(`data_1500M Men`$Result,':')[[i]][1])*60+as.numeric(strsplit(`data_1500M Men`$Result,':')[[i]][2])
 }
 for (i in 1:length(`data_1500M Women`$Result)){
   `data_1500M Women`$Result[i]<-as.numeric(strsplit(`data_1500M Women`$Result,':')[[i]][1])*60+as.numeric(strsplit(`data_1500M Women`$Result,':')[[i]][2])
 }
+`data_1500M Men`$Result<-as.numeric(`data_1500M Men`$Result)
+`data_1500M Women`$Result<-as.numeric(`data_1500M Women`$Result)
+
 
 WholeData<-list(`data_100M Men`, `data_100M Women`, `data_200M Men`, `data_200M Women`, `data_1500M Men`, `data_1500M Women`, `data_Long Jump Men`, `data_Long Jump Women`, `data_Shot Put Men`, `data_Shot Put Women`)
 
@@ -41,6 +45,8 @@ for (dataset in WholeData){
   name<- paste("model",i, sep="")
   model<-lm(Result~Year, data=dataset)
   assign(name,model)
+  boxcox(model, lambda = seq(-10, 10, 1/100))
+  title(main = focus[[i]])
   i=i+1
 }
 
@@ -83,3 +89,24 @@ for (dataset in WholeData){
   lines(dataset$Year,modelList2[[i]]$fitted.values)
   i<-i+1
 }
+
+#Log transformation assume Results=exp(Year)+c
+running<-list(`data_100M Men`, `data_100M Women`, `data_200M Men`, `data_200M Women`, `data_1500M Men`, `data_1500M Women`)
+i=1
+for (dataset in running){
+  name<- paste("model_log",i, sep="")
+  model<-lm(I(log(Result))~Year, data=dataset)
+  assign(name,model)
+  i=i+1
+}
+modelList3<-list(model_log1,model_log2,model_log3,model_log4,model_log5,model_log6)
+
+i=1
+for (dataset in running){
+  plot(dataset$Year,dataset$Result,main=focus[i], xlim = c(min(dataset$Year-1),2020), ylim = c(min(dataset$Result),max(dataset$Result)))
+  par(new=TRUE)
+  plot(dataset$Year,exp(modelList3[[i]]$fitted.values), col = 'red', xlim = c(min(dataset$Year-1),2020), ylim = c(min(dataset$Result),max(dataset$Result)))
+  lines(dataset$Year,modelList1[[i]]$fitted.values)
+  i<-i+1
+}
+
