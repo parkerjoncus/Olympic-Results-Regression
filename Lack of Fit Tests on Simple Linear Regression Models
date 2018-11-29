@@ -1,3 +1,32 @@
+X100M_Men <- read_excel("Math 484/100M_Men.xlsx")
+View(X100M_Men)
+library(readxl)
+X100M_Women <- read_excel("Math 484/100M_Women.xlsx")
+View(X100M_Women)
+library(readxl)
+X200M_Men <- read_excel("Math 484/200M_Men.xlsx")
+View(X200M_Men)
+library(readxl)
+X1500M_Men <- read_excel("Math 484/1500M_Men.xlsx")
+View(X1500M_Men)
+library(readxl)
+X1500M_Women <- read_excel("Math 484/1500M_Women.xlsx")
+View(X1500M_Women)
+library(readxl)
+X200M_Women <- read_excel("Math 484/200M_Women.xlsx")
+View(X200M_Women)
+library(readxl)
+LJ_Men <- read_excel("Math 484/LJ_Men.xlsx")
+View(LJ_Men)
+library(readxl)
+LJ_Women <- read_excel("Math 484/LJ_Women.xlsx")
+View(LJ_Women)
+library(readxl)
+SP_Men <- read_excel("Math 484/SP_Men.xlsx")
+View(SP_Men)
+library(readxl)
+SP_Women <- read_excel("Math 484/SP_Women.xlsx")
+
 #### Lack of Fit Tests
 ##100M Men
 
@@ -149,4 +178,3 @@ Residuals    39 81.732   2.096
  Pure Error  26  8.008   0.308                      
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
