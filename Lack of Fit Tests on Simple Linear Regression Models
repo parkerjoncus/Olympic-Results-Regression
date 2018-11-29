@@ -1,0 +1,152 @@
+#### Lack of Fit Tests
+##100M Men
+
+> Men_100_mod <-lm(Result~Year, data = X100M_Men)
+> pureErrorAnova(Men_100_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df  Sum Sq Mean Sq  F value    Pr(>F)    
+Year          1 21.0578 21.0578 1821.847 < 2.2e-16 ***
+Residuals    78  7.5653  0.0970                       
+ Lack of fit 25  6.9527  0.2781   24.061 < 2.2e-16 ***
+ Pure Error  53  0.6126  0.0116                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+##200M Men
+
+> Men_200_mod <-lm(Result~Year, data = X200M_Men)
+> pureErrorAnova(Men_200_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df Sum Sq Mean Sq   F value    Pr(>F)    
+Year          1 50.100  50.100 1380.6704 < 2.2e-16 ***
+Residuals    71  7.374   0.104                        
+ Lack of fit 24  5.669   0.236    6.5096 2.518e-08 ***
+ Pure Error  47  1.705   0.036                        
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+##1500M Men
+
+> Men_1500_mod <-lm(seconds~Year, data = X1500M_Men)
+> pureErrorAnova(Men_1500_mod)
+Analysis of Variance Table
+
+Response: seconds
+             Df  Sum Sq Mean Sq  F value    Pr(>F)    
+Year          1 10641.9 10641.9 14016.69 < 2.2e-16 ***
+Residuals    77  4972.4    64.6                       
+ Lack of fit 25  4932.9   197.3   259.89 < 2.2e-16 ***
+ Pure Error  52    39.5     0.8                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## Men Long Jump
+
+> Men_LJ_mod <-lm(Result~Year, data = LJ_Men)
+> pureErrorAnova(Men_LJ_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df  Sum Sq Mean Sq  F value    Pr(>F)    
+Year          1 18.5954 18.5954 813.0702 < 2.2e-16 ***
+Residuals    61  4.8908  0.0802                       
+ Lack of fit 19  3.9303  0.2069   9.0446 1.948e-09 ***
+ Pure Error  42  0.9606  0.0229                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## Men Shot Put
+
+> Men_SP_mod <-lm(Result~Year, data = SP_Men)
+> pureErrorAnova(Men_SP_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df Sum Sq Mean Sq  F value    Pr(>F)    
+Year          1 677.06  677.06 3269.422 < 2.2e-16 ***
+Residuals    58  50.72    0.87                       
+ Lack of fit 18  42.43    2.36   11.384  1.47e-10 ***
+ Pure Error  40   8.28    0.21                       
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## 100M Women
+
+> Women_100M_mod <-lm(Result~Year, data = X100M_Women)
+> pureErrorAnova(Women_100M_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df Sum Sq Mean Sq  F value    Pr(>F)    
+Year          1 7.5624  7.5624 645.0059 < 2.2e-16 ***
+Residuals    56 2.3539  0.0420                       
+ Lack of fit 18 1.9084  0.1060   9.0426 8.394e-09 ***
+ Pure Error  38 0.4455  0.0117                       
+---
+
+## 200M Women
+
+> Women_200M_mod <-lm(Result~Year, data = X200M_Women)
+> pureErrorAnova(Women_200M_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df  Sum Sq Mean Sq F value    Pr(>F)    
+Year          1 30.0241 30.0241 768.650 < 2.2e-16 ***
+Residuals    49 13.8579  0.2828                      
+ Lack of fit 15 12.5299  0.8353  21.385 4.959e-13 ***
+ Pure Error  34  1.3281  0.0391                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## 1500M Women
+
+> Women_1500M_mod <-lm(seconds~Year, data = X1500M_Women)
+> pureErrorAnova(Women_1500M_mod)
+Analysis of Variance Table
+
+Response: seconds
+             Df Sum Sq Mean Sq F value    Pr(>F)    
+Year          1  66.34  66.336  97.427 2.433e-09 ***
+Residuals    30 534.72  17.824                      
+ Lack of fit  9 520.43  57.825  84.928 1.765e-14 ***
+ Pure Error  21  14.30   0.681                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## Women Long Jump
+
+> Women_LJ_mod <-lm(Result~Year, data = LJ_Women)
+> pureErrorAnova(Women_LJ_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df  Sum Sq Mean Sq F value    Pr(>F)    
+Year          1 2.98000 2.98000 344.105 2.478e-15 ***
+Residuals    33 1.08102 0.03276                      
+ Lack of fit 10 0.88183 0.08818  10.183 2.686e-06 ***
+ Pure Error  23 0.19918 0.00866                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## Women Shot Put
+
+> Women_SP_mod <-lm(Result~Year, data = SP_Women)
+> pureErrorAnova(Women_SP_mod)
+Analysis of Variance Table
+
+Response: Result
+             Df Sum Sq Mean Sq F value    Pr(>F)    
+Year          1 57.096  57.096 185.378 2.429e-13 ***
+Residuals    39 81.732   2.096                      
+ Lack of fit 13 73.724   5.671  18.413 7.022e-10 ***
+ Pure Error  26  8.008   0.308                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
