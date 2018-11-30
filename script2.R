@@ -27,7 +27,7 @@ for (event in focus){
 #Create a list of the individual event data frames
 WholeData<-list(`data_100M Men`, `data_100M Women`, `data_200M Men`, `data_200M Women`, `data_1500M Men`, `data_1500M Women`, `data_Long Jump Men`, `data_Long Jump Women`, `data_Shot Put Men`, `data_Shot Put Women`)
 
-#Correlation plots
+#Correlation plots for numerical data
 i<-1
 for (dataset in WholeData){
   cor(dataset[,c(4,9,10,11,12)])
@@ -35,7 +35,7 @@ for (dataset in WholeData){
   i<-i+1
 }
 
-#step regression with single order
+#step regression with single order terms
 i<-1
 for (dataset in WholeData){
   name<- paste("model",i, sep="")
@@ -50,8 +50,10 @@ for (dataset in WholeData){
   i=i+1
 }
 
+#List of the single order term models
 modelList1<-list(model_final1,model_final2,model_final3,model_final4,model_final5,model_final6,model_final7,model_final8,model_final9,model_final10)
 
+#Print out the summaries of the models
 for (model in modelList1){
   print(summary(model))
 }
@@ -72,13 +74,15 @@ for (dataset in WholeData){
   i=i+1
 }
 
+#List of the higher order models
 modelList2<-list(model_final1,model_final2,model_final3,model_final4,model_final5,model_final6,model_final7,model_final8,model_final9,model_final10)
 
+#Print the summaries of the higher order models
 for (model in modelList2){
   print(summary(model))
 }
 
-#List adj R^2 values for each event
+#List adj R^2 values for each event and each model to compare
 for (i in 1:length(modelList2)){
   print(focus[i])
   print('single order')
