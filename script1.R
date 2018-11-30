@@ -249,10 +249,5 @@ for (i in 1:length(modelList1)){
   legend('topright', legend=c("linear", "polynomial", "boxcox", "log"),col=c("red", "blue", "green", "black"), lty=1, cex=0.4)
 }
 
-########
-#Get only the R^2 value
-summary(model1)[[9]]
-(predict(model_boxcox1,newdata = data.frame(Year=1:3000), type = 'response' )[3000]*-9.5)^(1/-10.5)
-
 
 
